@@ -4,13 +4,13 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 3001
-const connectDB = require('./config/db')
-const userRoutes = require('./routes/userRoutes');
-const chatRoutes = require("./routes/chatRoutes");
-const imageRoutes = require("./routes/imageRoute");
-const commentRoutes = require('./routes/commentRoutes')
-const messageRoutes = require('./routes/messageRoutes')
-const { errorHandler, notFound } = require('./middleware/errorMiddleware');
+const connectDB = require('./backend/config/db')
+const userRoutes = require('./backend/routes/userRoutes');
+const chatRoutes = require("./backend/routes/chatRoutes");
+const imageRoutes = require("./backend/routes/imageRoute");
+const commentRoutes = require('./backend/routes/commentRoutes')
+const messageRoutes = require('./backend/routes/messageRoutes')
+const { errorHandler, notFound } = require('./backend/middleware/errorMiddleware');
 
 connectDB();
 const app = express();
@@ -46,7 +46,7 @@ const server = app.listen(PORT,()=>{
 const io = require("socket.io")(server,{
     pingTimeout: 60000,
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://pavangram.netlify.app",
     }
 })
 
